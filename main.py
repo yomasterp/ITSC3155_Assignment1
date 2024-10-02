@@ -56,6 +56,7 @@ class SandwichMachine:
     def process_coins(self):
         """Returns the total calculated from coins inserted.
            Hint: include input() function here, e.g. input("how many quarters?: ")"""
+        """Commit #2"""
 
         print("Please insert coins.")
         total_coins = 0
