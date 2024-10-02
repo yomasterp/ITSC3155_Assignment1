@@ -46,6 +46,7 @@ class SandwichMachine:
 
     def check_resources(self, ingredients):
         """Returns True when order can be made, False if ingredients are insufficient."""
+        """Commit #1"""
         for item in ingredients:
             if ingredients[item] > self.machine_resources[item]:
                 print(f"Sorry, not enough resources for {item}.")
