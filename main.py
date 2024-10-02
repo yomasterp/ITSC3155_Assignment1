@@ -96,6 +96,7 @@ class SandwichMachine:
 
 sandwich_machine = SandwichMachine(resources)
 
+"""Commit #5"""
 while True:
     choice = input("Would you like? (small/medium/large/off/report): ").lower()
     if choice == "off":
