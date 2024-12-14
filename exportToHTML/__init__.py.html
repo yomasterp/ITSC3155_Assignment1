@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>__init__.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #5f826b; font-style: italic;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+__init__.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">pip</span><span class="s2">.</span><span class="s1">_internal</span><span class="s2">.</span><span class="s1">distributions</span><span class="s2">.</span><span class="s1">base </span><span class="s0">import </span><span class="s1">AbstractDistribution</span>
+<span class="s0">from </span><span class="s1">pip</span><span class="s2">.</span><span class="s1">_internal</span><span class="s2">.</span><span class="s1">distributions</span><span class="s2">.</span><span class="s1">sdist </span><span class="s0">import </span><span class="s1">SourceDistribution</span>
+<span class="s0">from </span><span class="s1">pip</span><span class="s2">.</span><span class="s1">_internal</span><span class="s2">.</span><span class="s1">distributions</span><span class="s2">.</span><span class="s1">wheel </span><span class="s0">import </span><span class="s1">WheelDistribution</span>
+<span class="s0">from </span><span class="s1">pip</span><span class="s2">.</span><span class="s1">_internal</span><span class="s2">.</span><span class="s1">req</span><span class="s2">.</span><span class="s1">req_install </span><span class="s0">import </span><span class="s1">InstallRequirement</span>
+
+
+<span class="s0">def </span><span class="s1">make_distribution_for_install_requirement</span><span class="s2">(</span>
+    <span class="s1">install_req</span><span class="s2">: </span><span class="s1">InstallRequirement</span><span class="s2">,</span>
+<span class="s2">) </span><span class="s1">-&gt; AbstractDistribution</span><span class="s2">:</span>
+    <span class="s3">&quot;&quot;&quot;Returns a Distribution for the given InstallRequirement&quot;&quot;&quot;</span>
+    <span class="s4"># Editable requirements will always be source distributions. They use the</span>
+    <span class="s4"># legacy logic until we create a modern standard for them.</span>
+    <span class="s0">if </span><span class="s1">install_req</span><span class="s2">.</span><span class="s1">editable</span><span class="s2">:</span>
+        <span class="s0">return </span><span class="s1">SourceDistribution</span><span class="s2">(</span><span class="s1">install_req</span><span class="s2">)</span>
+
+    <span class="s4"># If it's a wheel, it's a WheelDistribution</span>
+    <span class="s0">if </span><span class="s1">install_req</span><span class="s2">.</span><span class="s1">is_wheel</span><span class="s2">:</span>
+        <span class="s0">return </span><span class="s1">WheelDistribution</span><span class="s2">(</span><span class="s1">install_req</span><span class="s2">)</span>
+
+    <span class="s4"># Otherwise, a SourceDistribution</span>
+    <span class="s0">return </span><span class="s1">SourceDistribution</span><span class="s2">(</span><span class="s1">install_req</span><span class="s2">)</span>
+</pre>
+</body>
+</html>
